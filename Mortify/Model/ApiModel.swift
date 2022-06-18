@@ -24,20 +24,20 @@ import Alamofire
 import Foundation
 
 // MARK: - Characters
-struct Characters: Codable {
+struct Characters {
     let info: Info
     let results: [Result]
 }
 
 // MARK: - Info
-struct Info: Codable {
+struct Info {
     let count, pages: Int
     let next: String
-    let prev: JSONNull?
+    let prev: NSNull
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Result {
     let id: Int
     let name: String
     let status: Status
@@ -51,25 +51,25 @@ struct Result: Codable {
     let created: String
 }
 
-enum Gender: String, Codable {
-    case female = "Female"
-    case male = "Male"
-    case unknown = "unknown"
+enum Gender {
+    case female
+    case male
+    case unknown
 }
 
 // MARK: - Location
-struct Location: Codable {
+struct Location {
     let name: String
     let url: String
 }
 
-enum Species: String, Codable {
-    case alien = "Alien"
-    case human = "Human"
+enum Species {
+    case alien
+    case human
 }
 
-enum Status: String, Codable {
-    case alive = "Alive"
-    case dead = "Dead"
-    case unknown = "unknown"
+enum Status {
+    case alive
+    case dead
+    case unknown
 }
