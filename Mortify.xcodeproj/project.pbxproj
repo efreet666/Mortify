@@ -16,6 +16,10 @@
 		F543BA89285C80D500BD356D /* MortifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA88285C80D500BD356D /* MortifyTests.swift */; };
 		F543BA93285C80D500BD356D /* MortifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA92285C80D500BD356D /* MortifyUITests.swift */; };
 		F543BA95285C80D500BD356D /* MortifyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA94285C80D500BD356D /* MortifyUITestsLaunchTests.swift */; };
+		F543BAA4285C8D1200BD356D /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BAA3285C8D1200BD356D /* PersonTableViewController.swift */; };
+		F5D6930D285CFA1800150E20 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */; };
+		F5D6930E285CFA1800150E20 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5D69311285CFADB00150E20 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D69310285CFADB00150E20 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F5D6930F285CFA1800150E20 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5D6930E285CFA1800150E20 /* Alamofire.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F543BA6E285C80D200BD356D /* Mortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F543BA71285C80D200BD356D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +67,9 @@
 		F543BA8E285C80D500BD356D /* MortifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MortifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F543BA92285C80D500BD356D /* MortifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortifyUITests.swift; sourceTree = "<group>"; };
 		F543BA94285C80D500BD356D /* MortifyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortifyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F543BAA3285C8D1200BD356D /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
+		F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		F5D69310285CFADB00150E20 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5D6930D285CFA1800150E20 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +101,7 @@
 		F543BA65285C80D200BD356D = {
 			isa = PBXGroup;
 			children = (
+				F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */,
 				F543BA70285C80D200BD356D /* Mortify */,
 				F543BA87285C80D500BD356D /* MortifyTests */,
 				F543BA91285C80D500BD356D /* MortifyUITests */,
@@ -102,6 +125,9 @@
 				F543BA71285C80D200BD356D /* AppDelegate.swift */,
 				F543BA73285C80D200BD356D /* SceneDelegate.swift */,
 				F543BA75285C80D200BD356D /* ViewController.swift */,
+				F5D69310285CFADB00150E20 /* Networking.swift */,
+				F543BAA2285C8CB100BD356D /* View */,
+				F543BAA1285C8CA300BD356D /* Model */,
 				F543BA77285C80D200BD356D /* Main.storyboard */,
 				F543BA7A285C80D500BD356D /* Assets.xcassets */,
 				F543BA7C285C80D500BD356D /* LaunchScreen.storyboard */,
@@ -127,6 +153,21 @@
 			path = MortifyUITests;
 			sourceTree = "<group>";
 		};
+		F543BAA1285C8CA300BD356D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F543BAA2285C8CB100BD356D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F543BAA3285C8D1200BD356D /* PersonTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +178,7 @@
 				F543BA6A285C80D200BD356D /* Sources */,
 				F543BA6B285C80D200BD356D /* Frameworks */,
 				F543BA6C285C80D200BD356D /* Resources */,
+				F5D6930F285CFA1800150E20 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F543BAA4285C8D1200BD356D /* PersonTableViewController.swift in Sources */,
+				F5D69311285CFADB00150E20 /* Networking.swift in Sources */,
 				F543BA76285C80D200BD356D /* ViewController.swift in Sources */,
 				F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */,
 				F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */,

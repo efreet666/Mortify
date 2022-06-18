@@ -6,12 +6,22 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+       
+//        AF.request("https://rickandmortyapi.com/api/character").response { response in
+//            print(response)
+//        }
+        
+        struct DecodableType: Decodable { let url: String }
+
+        AF.request("https://rickandmortyapi.com/api/character").responseDecodable(of: DecodableType.self) { response in
+            print("Response: \(response)")
+        }
     }
 
 
