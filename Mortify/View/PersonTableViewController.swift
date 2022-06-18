@@ -13,7 +13,7 @@ class PersonTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+    dataRequest(url: URL)
        
     }
 

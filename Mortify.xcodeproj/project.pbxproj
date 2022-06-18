@@ -20,6 +20,7 @@
 		F5D6930D285CFA1800150E20 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */; };
 		F5D6930E285CFA1800150E20 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5D69311285CFADB00150E20 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D69310285CFADB00150E20 /* Networking.swift */; };
+		F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D69312285E68DA00150E20 /* ApiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		F543BAA3285C8D1200BD356D /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		F5D69310285CFADB00150E20 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		F5D69312285E68DA00150E20 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		F543BAA1285C8CA300BD356D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F5D69312285E68DA00150E20 /* ApiModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				F5D69311285CFADB00150E20 /* Networking.swift in Sources */,
 				F543BA76285C80D200BD356D /* ViewController.swift in Sources */,
 				F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */,
+				F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */,
 				F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
