@@ -17,11 +17,11 @@ class ViewController: UIViewController {
 //            print(response)
 //        }
         
-        struct DecodableType: Decodable { let url: String }
-
-        AF.request("https://rickandmortyapi.com/api/character").responseDecodable(of: DecodableType.self) { response in
-            print("Response: \(response)")
-        }
+//        struct DecodableType: Decodable { let url: String }
+//
+//        AF.request("https://rickandmortyapi.com/api/character").responseDecodable(of: DecodableType.self) { response in
+//            print("Response: \(response)")
+//        }
     }
 
 

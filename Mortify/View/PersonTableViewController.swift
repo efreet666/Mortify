@@ -31,12 +31,15 @@ class PersonTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "meCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
         var content = cell.defaultContentConfiguration()
         content.text = personArray[indexPath.row]
+
+        cell.contentConfiguration = content
         
-        cell .contentConfiguration = content
+//        cell.textLabel?.text = personArray[indexPath.row]
+        
         return cell
     }
     

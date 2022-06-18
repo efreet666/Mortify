@@ -122,8 +122,6 @@
 		F543BA70285C80D200BD356D /* Mortify */ = {
 			isa = PBXGroup;
 			children = (
-				F543BA71285C80D200BD356D /* AppDelegate.swift */,
-				F543BA73285C80D200BD356D /* SceneDelegate.swift */,
 				F543BA75285C80D200BD356D /* ViewController.swift */,
 				F5D69310285CFADB00150E20 /* Networking.swift */,
 				F543BAA2285C8CB100BD356D /* View */,
@@ -131,6 +129,8 @@
 				F543BA77285C80D200BD356D /* Main.storyboard */,
 				F543BA7A285C80D500BD356D /* Assets.xcassets */,
 				F543BA7C285C80D500BD356D /* LaunchScreen.storyboard */,
+				F543BA71285C80D200BD356D /* AppDelegate.swift */,
+				F543BA73285C80D200BD356D /* SceneDelegate.swift */,
 				F543BA7F285C80D500BD356D /* Info.plist */,
 			);
 			path = Mortify;
