@@ -6,34 +6,27 @@
 //
 
 import Foundation
-
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let characters = try? newJSONDecoder().decode(Characters.self, from: jsonData)
-
-
-
-import Foundation
 import Alamofire
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let characters = try? newJSONDecoder().decode(Characters.self, from: jsonData)
 
-import Foundation
+//// MARK: - Characters
+//struct Characters: Codable {
+//    let results: [Result]
+//}
+//
+//// MARK: - Result
+//struct Result: Codable {
+//    let name: String
+//    let image: String
+//    let url: String
+//
+//}
+
+
+
 
 // MARK: - Characters
 struct Characters: Codable {
-    let info: Info
     let results: [Result]
-}
-
-// MARK: - Info
-struct Info: Codable {
-    let count, pages: Int
-    let next: String
-//    let prev: NSNull
 }
 
 // MARK: - Result

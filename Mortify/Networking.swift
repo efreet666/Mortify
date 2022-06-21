@@ -14,9 +14,14 @@ func dataRequest(url: String){
         .validate()
         .responseJSON{ dataResponse in
             switch dataResponse.result{
-            case .success(_):
-            case .failure(_):
-            
+            case .success(let value):
+                guard let charactersData = value as? [Characters] else { return }
+                
+                for characterData in charactersData{
+                    let character = Characters(results: [Result(name: characterData["name"], image: <#T##String#>, url: <#T##String#>)])
+                }
+            case .failure(let error):
+                print(error)
         }
     }
     
