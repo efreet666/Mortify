@@ -21,6 +21,8 @@
 		F5D6930E285CFA1800150E20 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5D69311285CFADB00150E20 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D69310285CFADB00150E20 /* Networking.swift */; };
 		F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D69312285E68DA00150E20 /* ApiModel.swift */; };
+		F5D8C0B928637E5500B5E907 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8C0B828637E5500B5E907 /* WebView.swift */; };
+		F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		F5D69310285CFADB00150E20 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F5D69312285E68DA00150E20 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
+		F5D8C0B828637E5500B5E907 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInfoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 			children = (
 				F543BA75285C80D200BD356D /* ViewController.swift */,
 				F5D69310285CFADB00150E20 /* Networking.swift */,
+				F5D8C0B828637E5500B5E907 /* WebView.swift */,
+				F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */,
 				F543BAA2285C8CB100BD356D /* View */,
 				F543BAA1285C8CA300BD356D /* Model */,
 				F543BA77285C80D200BD356D /* Main.storyboard */,
@@ -306,9 +312,11 @@
 				F543BAA4285C8D1200BD356D /* PersonTableViewController.swift in Sources */,
 				F5D69311285CFADB00150E20 /* Networking.swift in Sources */,
 				F543BA76285C80D200BD356D /* ViewController.swift in Sources */,
+				F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */,
 				F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */,
 				F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */,
 				F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */,
+				F5D8C0B928637E5500B5E907 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
