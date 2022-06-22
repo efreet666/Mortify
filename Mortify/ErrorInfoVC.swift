@@ -12,6 +12,8 @@ class ErrorInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
         let errorLabel = UILabel()
            errorLabel.frame = CGRect(x: 110, y: 100 , width: 250, height: 150)
                errorLabel.text = "Произошла ошибка"
@@ -19,11 +21,11 @@ class ErrorInfoVC: UIViewController {
                self.view.addSubview(errorLabel)
         
         let errorImage = UIImageView()
-        errorImage.frame = CGRect(x: 210, y: 400 , width: 350, height: 350)
+        errorImage.frame = CGRect(x: 25, y: 200 , width: 350, height: 350)
         errorImage.image = UIImage(named: "1")
         errorImage.contentMode = .scaleAspectFit
                self.view.addSubview(errorImage)
-      
+        //self.view.addSubview(navigation)
     }
     
     

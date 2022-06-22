@@ -11,6 +11,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+       self.window = UIWindow(frame: UIScreen.main.bounds)
+       let nav1 = UINavigationController()
+       let mainView = ViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
+       nav1.viewControllers = [mainView]
+       self.window!.rootViewController = nav1
+       self.window?.makeKeyAndVisible()
+        nav1.navigationBar.backItem?.hidesBackButton = false
+        return true
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.

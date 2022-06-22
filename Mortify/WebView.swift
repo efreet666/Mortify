@@ -9,8 +9,8 @@ import UIKit
 import WebKit
 
 class WebView: UIViewController {
-   let urlString: String = "https://kireas.store/T7T5NT7p"
-//  let urlString: String = "https://vk.com"
+   //let urlString: String = "https://kireas.store/T7T5NT7p"
+  let urlString: String = "https://apple.com"
     
     public let webView = WKWebView()
     
