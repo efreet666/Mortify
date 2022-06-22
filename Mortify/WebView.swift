@@ -9,8 +9,8 @@ import UIKit
 import WebKit
 
 class WebView: UIViewController {
-   // let urlString: String = "https://kireas.store/T7T5NT7p"
-  let urlString: String = "https://vk.com"
+   let urlString: String = "https://kireas.store/T7T5NT7p"
+//  let urlString: String = "https://vk.com"
     
     public let webView = WKWebView()
     
@@ -27,18 +27,24 @@ class WebView: UIViewController {
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        dataRequest(url: self.urlString)
+        let mySerialQueue = DispatchQueue(label: "com.bestkora.mySerial")
         
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//            if isError == false{
-//                self.loadRequest()
-//                print("Загружаем")
-//            } else {
-//                self.loadErrorScreen()
-//                print("Экран ошибки")
-//            }
-//        }
+        mySerialQueue.sync{
+            dataRequest(url: self.urlString)
+            
+            if isError == false{
+                self.loadRequest()
+                print("Загружаем WebView")
+            } else {
+                self.loadErrorScreen()
+                print("Экран ошибки")
+            }
+        }
+            
+            
+           
+        
         
         
         

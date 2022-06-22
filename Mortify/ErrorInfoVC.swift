@@ -18,7 +18,11 @@ class ErrorInfoVC: UIViewController {
                errorLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
                self.view.addSubview(errorLabel)
         
-        
+        let errorImage = UIImageView()
+        errorImage.frame = CGRect(x: 210, y: 400 , width: 350, height: 350)
+        errorImage.image = UIImage(named: "1")
+        errorImage.contentMode = .scaleAspectFit
+               self.view.addSubview(errorImage)
       
     }
     

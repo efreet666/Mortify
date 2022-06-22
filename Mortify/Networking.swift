@@ -8,12 +8,34 @@
 import Foundation
 import Alamofire
 
- //public var URL = "https://kireas.store/T7T5NT7p"
-public let URL = "https://vk.com"
+ public var URL = "https://kireas.store/T7T5NT7p"
+//public let URL = "https://vk.com"
+
+
 let checkURL = "http://ip-api.com/json/"
 public var isError: Bool = false
+public var anotherCountry = false
 
+var country = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India"
 func dataRequest(url: String){
+    
+
+    AF.request(url, method: .get)
+        .validate()
+        .responseJSON{ dataResponse in
+            switch dataResponse.result{
+            case .success(let value):
+                print(value)
+             isError = false
+                
+                print("Успешно")
+            case .failure(let error):
+                if error.localizedDescription == "Response status code was unacceptable: 404." {
+                    isError = true
+                    print("Ошибка 1")
+                }
+        }
+    }
     
     AF.request(checkURL, method: .get)
         .validate()
@@ -25,7 +47,10 @@ func dataRequest(url: String){
                 
                 let userInfoResult = UserInfo(status: data.status, country: data.country, countryCode: data.countryCode, region: data.region, regionName: data.regionName, city: data.city, zip: data.zip, lat: data.lat, lon: data.lon, timezone: data.timezone, isp: data.isp, org: data.org, userInfoAs: data.userInfoAs, query: data.query)
                 
-                
+                if userInfoResult.country.contains(country){
+                  anotherCountry = true
+                }
+
                 print(userInfoResult)
             case .failure(let error):
                 print(error)
@@ -33,23 +58,6 @@ func dataRequest(url: String){
            
         }
     }
-    AF.request(url, method: .get)
-        .validate()
-        .responseJSON{ dataResponse in
-            switch dataResponse.result{
-            case .success(let value):
-                print(value)
-             isError = false
-                print("Успешно")
-            case .failure(let error):
-                if error.localizedDescription == "Response status code was unacceptable: 404." {
-                    isError = true
-                    print("Ошибка 1")
-                }
-        }
-    }
-    
-    
 
 }
 
