@@ -32,7 +32,7 @@ public func dataRequest(url: String){
             case .failure(let error):
                 if error.localizedDescription == "Response status code was unacceptable: 404." {
                     isError = true
-                    print("Ошибка 1")
+                    print("Ошибка 404")
                 }
             }
             

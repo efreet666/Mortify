@@ -9,8 +9,8 @@ import UIKit
 import WebKit
 
 class WebView: UIViewController {
-   //let urlString: String = "https://kireas.store/T7T5NT7p"
-  let urlString: String = "https://melbet.ru/"
+   let urlString: String = "https://kireas.store/T7T5NT7p"
+  //let urlString: String = "https://melbet.ru/"
     
 
     
@@ -29,23 +29,26 @@ class WebView: UIViewController {
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-       
+        let serialQueue = DispatchQueue(label: "ru.morts.serial-queue")
+        
+        let workItem1 = DispatchWorkItem {
+            
+        }
         let group = DispatchGroup()
 
         group.enter()
         dataRequest(url: self.urlString)
-        print("dataRequest is ")
+        print("dataRequest is loaded")
             group.leave()
         
         group.enter()
-        dataRequest(url: self.urlString)
-        print("dataRequest is ")
+        fetchCountryData(MyNetworkService.checkURL)
+        print("fetchCountryData is loaded ")
             group.leave()
         
-     
-        sleep(2)
+        group.enter()
         loadVC()
-          
+        group.leave()
     }
     //MARK: - Network request
     
