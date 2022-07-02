@@ -12,6 +12,7 @@ class ErrorInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         let errorLabel = UILabel()
@@ -25,11 +26,31 @@ class ErrorInfoVC: UIViewController {
         errorImage.image = UIImage(named: "1")
         errorImage.contentMode = .scaleAspectFit
                self.view.addSubview(errorImage)
-        //self.view.addSubview(navigation)
+      
+        let reloadDataButton = UIButton()
+        reloadDataButton.frame = CGRect(x: 25, y: self.view.frame.size.height - 200, width: self.view.frame.size.width - 50, height: 50)
+        reloadDataButton.setTitle("Обновить", for: .normal)
+        reloadDataButton.backgroundColor = .orange
+               self.view.addSubview(reloadDataButton)
+        reloadDataButton.addTarget(self, action: #selector(reloadDataRequest), for: .touchUpInside)
+        
+        
+        
     }
     
-    
-
+    //MARK: - Update data
+    @objc func reloadDataRequest(target: UIButton){
+        let vc = WebView()
+//        vc.loadVC()
+        
+        dataRequest(url: vc.urlString)
+        vc.fetchCountryData(MyNetworkService.checkURL)
+        sleep(2)
+        vc.loadVC()
+        print("updating data")
+        }
+   
 
 
 }
+

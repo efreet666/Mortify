@@ -8,25 +8,25 @@
 import Foundation
 import Alamofire
 
- public var URL = "https://kireas.store/T7T5NT7p"
-//public let URL = "https://vk.com"
-
-
-let checkURL = "http://ip-api.com/json/"
+public var URL = "https://kireas.store/T7T5NT7p"
 public var isError: Bool = false
 public var anotherCountry = false
 
-var country = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India"
-func dataRequest(url: String){
-    
 
+
+enum ObtainResult {
+    case success(UserInfo)
+    case failure(Error)
+}
+
+public func dataRequest(url: String){
     AF.request(url, method: .get)
         .validate()
         .responseJSON{ dataResponse in
             switch dataResponse.result{
             case .success(let value):
                 print(value)
-             isError = false
+                isError = false
                 
                 print("Успешно")
             case .failure(let error):
@@ -34,31 +34,27 @@ func dataRequest(url: String){
                     isError = true
                     print("Ошибка 1")
                 }
+            }
+            
+        }
+    
+}
+class MyNetworkService{
+    static let checkURL = "http://ip-api.com/json/"
+    
+    class func fetchData(_ pageUrl: String, completion: @escaping (ObtainResult) -> ()) {
+        AF.request(pageUrl).responseDecodable(of: UserInfo.self) {
+            responseJson in
+            switch responseJson.result {
+            case .success(let json):
+                completion(.success(json))
+                print(completion(.success(json)))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     
-    AF.request(checkURL, method: .get)
-        .validate()
-        .responseJSON{ dataResponse in
-            switch dataResponse.result{
-            case .success(let value):
-                print(value)
-                guard let data = value as? UserInfo else { return }
-                
-                let userInfoResult = UserInfo(status: data.status, country: data.country, countryCode: data.countryCode, region: data.region, regionName: data.regionName, city: data.city, zip: data.zip, lat: data.lat, lon: data.lon, timezone: data.timezone, isp: data.isp, org: data.org, userInfoAs: data.userInfoAs, query: data.query)
-                
-                if userInfoResult.country.contains(country){
-                  anotherCountry = true
-                }
-
-                print(userInfoResult)
-            case .failure(let error):
-                print(error)
-                
-           
-        }
-    }
-
 }
 
 

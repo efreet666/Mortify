@@ -10,7 +10,9 @@ import WebKit
 
 class WebView: UIViewController {
    //let urlString: String = "https://kireas.store/T7T5NT7p"
-  let urlString: String = "https://apple.com"
+  let urlString: String = "https://melbet.ru/"
+    
+
     
     public let webView = WKWebView()
     
@@ -27,43 +29,71 @@ class WebView: UIViewController {
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        let mySerialQueue = DispatchQueue(label: "com.bestkora.mySerial")
+       
+        let group = DispatchGroup()
+
+        group.enter()
+        dataRequest(url: self.urlString)
+        print("dataRequest is ")
+            group.leave()
         
+        group.enter()
+        dataRequest(url: self.urlString)
+        print("dataRequest is ")
+            group.leave()
         
-        mySerialQueue.sync{
-            dataRequest(url: self.urlString)
-            
-            if isError == false{
-                self.loadRequest()
-                print("Загружаем WebView")
-            } else {
-                self.loadErrorScreen()
-                print("Экран ошибки")
+     
+        sleep(2)
+        loadVC()
+          
+    }
+    //MARK: - Network request
+    
+    //Our target coutries
+    let targetCountries = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India, Russia"
+    public var country: String?
+
+    func fetchCountryData(_ pageUrl: String){
+        DispatchQueue.main.async {
+            MyNetworkService.fetchData(pageUrl) { [weak self] result in
+                switch result {
+                case .success(let infoDataModel):
+                    self?.country = infoDataModel.country
+                    guard let userCountry = self?.country else { return }
+                       print(userCountry)
+                    
+                    //Check user country
+                    if self!.targetCountries.contains(userCountry) {
+                        isError = false
+                    }
+                case .failure(let err):
+                    print(err)
+                }
             }
         }
-            
-            
-           
-        
-        
-        
-        
-    }
-    
-    private func loadRequest() {
-      
-       guard let myUrl = NSURL(string: urlString) else { return }
-       
-       let urlRequest = URLRequest(url: myUrl as URL)
-               
-               webView.load(urlRequest)
-       
-   }
- 
-    private func loadErrorScreen(){
-        let vc = ErrorInfoVC()
-//                vc.viewController = self
-                self.navigationController?.pushViewController(vc, animated: true)
     }
 
+    
+    public func loadRequest() {
+       guard let myUrl = NSURL(string: urlString) else { return }
+       let urlRequest = URLRequest(url: myUrl as URL)
+               webView.load(urlRequest)
+   }
+ 
+    public func loadErrorScreen(){
+        let vc = ErrorInfoVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    public func loadVC(){
+        if isError == false{
+            loadRequest()
+            print("Load WebView")
+        } else {
+            loadErrorScreen()
+            print("Error screen")
+        }
+    }
 }
+
+

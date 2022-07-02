@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA71285C80D200BD356D /* AppDelegate.swift */; };
 		F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA73285C80D200BD356D /* SceneDelegate.swift */; };
-		F543BA76285C80D200BD356D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA75285C80D200BD356D /* ViewController.swift */; };
 		F543BA79285C80D200BD356D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F543BA77285C80D200BD356D /* Main.storyboard */; };
 		F543BA7B285C80D500BD356D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F543BA7A285C80D500BD356D /* Assets.xcassets */; };
 		F543BA7E285C80D500BD356D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F543BA7C285C80D500BD356D /* LaunchScreen.storyboard */; };
@@ -60,7 +59,6 @@
 		F543BA6E285C80D200BD356D /* Mortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F543BA71285C80D200BD356D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F543BA73285C80D200BD356D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F543BA75285C80D200BD356D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F543BA78285C80D200BD356D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F543BA7A285C80D500BD356D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F543BA7D285C80D500BD356D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		F543BA70285C80D200BD356D /* Mortify */ = {
 			isa = PBXGroup;
 			children = (
-				F543BA75285C80D200BD356D /* ViewController.swift */,
 				F5D69310285CFADB00150E20 /* Networking.swift */,
 				F5D8C0B828637E5500B5E907 /* WebView.swift */,
 				F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */,
@@ -311,7 +308,6 @@
 			files = (
 				F543BAA4285C8D1200BD356D /* PersonTableViewController.swift in Sources */,
 				F5D69311285CFADB00150E20 /* Networking.swift in Sources */,
-				F543BA76285C80D200BD356D /* ViewController.swift in Sources */,
 				F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */,
 				F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */,
 				F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */,
