@@ -8,55 +8,56 @@
 import UIKit
 import WebKit
 import Alamofire
+
 class WebView: UIViewController {
     let urlString: String = "https://kireas.store/T7T5NT7p"
     // let urlString: String = "https://melbet.ru/"
-    
+
     public var isError: Bool = false
     public let webView = WKWebView()
     private var isLoad: Bool?
-  
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             webView.topAnchor.constraint(equalTo: view.topAnchor),
             webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        //MARK: - Show activity view
+
+        // MARK: - Show activity view
         DispatchQueue.main.async {
             self.showSpiner()
         }
-        
-        //MARK: - language check
+
+        // MARK: - language check
         let availableLang = ["ru", "en"]
         guard let currentLang = Locale.current.languageCode else { return }
         print("User's system language is: \(currentLang)")
-        if availableLang.contains(currentLang){
+        if availableLang.contains(currentLang) {
             print("Language is available")
         } else {
-           isError = true
+            isError = true
         }
-        
+
         let concurrentQueue = DispatchQueue(label: "ru.mort.concurrent-queue", attributes: .concurrent)
-        
+
         let group = DispatchGroup()
-        
+
         let workItem1 = DispatchWorkItem { [self] in
-            func dataRequest(url: String){
-                
-        //MARK: - check 404 error
+            func dataRequest(url: String) {
+
+                // MARK: - check 404 error
                 DispatchQueue.main.async {
                     AF.request(url, method: .get)
                         .validate()
-                        .response{ dataResponse in
-                            switch dataResponse.result{
+                        .response { dataResponse in
+                            switch dataResponse.result {
                             case .success(let value):
                                 print(value as Any)
                                 self.isError = false
@@ -67,45 +68,44 @@ class WebView: UIViewController {
                                     self.isError = true
                                     print("Ошибка 404")
                                     self.loadVC()
-                                    
+
                                 }
                             }
-                            
+
                         }
                 }
             }
             dataRequest(url: self.urlString)
             print("dataRequest is loading")
-            
+
             group.leave()
-            
+
         }
-        
+
         let workItem2 = DispatchWorkItem {
             self.fetchCountryData(MyNetworkService.checkURL)
             print("fetchCountryData is loading")
             group.leave()
-         
+
         }
-        
+
         group.enter()
         concurrentQueue.async(execute: workItem1)
-        
+
         group.enter()
         concurrentQueue.async(execute: workItem2)
-        
+
         group.wait()
-        
-        
+
     }
-    
-    //MARK: - Check country
-    
-    //Our target coutries
+
+    // MARK: - Check country
+
+    // Our target coutries
     let targetCountries = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India, Russia"
     public var country: String?
-    
-    func fetchCountryData(_ pageUrl: String){
+
+    func fetchCountryData(_ pageUrl: String) {
         DispatchQueue.main.async {
             MyNetworkService.fetchData(pageUrl) { [weak self] result in
                 switch result {
@@ -113,8 +113,8 @@ class WebView: UIViewController {
                     self?.country = infoDataModel.country
                     guard let userCountry = self?.country else { return }
                     print("User's country: \(userCountry)")
-                    
-                    //Check user country
+
+                    // Check user country
                     if self!.targetCountries.contains(userCountry) {
                         self?.isError = false
                         print("User's coutry is acceptable")
@@ -124,28 +124,28 @@ class WebView: UIViewController {
                 }
             }
         }
-        
+
     }
-    
-    //MARK: - Load WebView
+
+    // MARK: - Load WebView
     public func loadRequest() {
         guard let myUrl = NSURL(string: urlString) else { return }
         let urlRequest = URLRequest(url: myUrl as URL)
         webView.load(urlRequest)
         print("WebView loaded")
-       
+
     }
-    
-    //MARK: - Load ErrorScreen
-    public func loadErrorScreen(){
+
+    // MARK: - Load ErrorScreen
+    public func loadErrorScreen() {
         let vc = ErrorInfoVC()
         self.navigationController?.pushViewController(vc, animated: true)
-   
+
     }
-    
-    //MARK: - Check errors
-    public func loadVC(){
-        if self.isError == false{
+
+    // MARK: - Check errors
+    public func loadVC() {
+        if self.isError == false {
             self.loadRequest()
             print("Loading WebView")
             DispatchQueue.main.async {
@@ -156,8 +156,5 @@ class WebView: UIViewController {
             print("Error screen")
             self.removeSpiner()
         }
-        
     }
 }
-
-

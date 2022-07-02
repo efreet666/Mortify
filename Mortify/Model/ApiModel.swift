@@ -21,4 +21,3 @@ struct UserInfo: Codable {
         case query
     }
 }
-
