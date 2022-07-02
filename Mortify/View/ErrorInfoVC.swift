@@ -9,7 +9,8 @@ import UIKit
 
 class ErrorInfoVC: UIViewController {
 
-    func errorAlert(title: String, message: String, style: UIAlertController.Style){
+    //MARK: - Error alert
+    public func errorAlert(title: String, message: String, style: UIAlertController.Style){
             let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
            
         let action = UIAlertAction(title: "OK", style: .default) {_ in }
@@ -20,8 +21,8 @@ class ErrorInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        //MARK: - Create elements
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         let errorLabel = UILabel()

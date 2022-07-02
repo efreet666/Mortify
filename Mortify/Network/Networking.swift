@@ -8,15 +8,17 @@
 import Foundation
 import Alamofire
 
+//MARK: - Our URL
 public var URL = "https://kireas.store/T7T5NT7p"
+
 public var isError: Bool?
-public var anotherCountry = false
 
 enum ObtainResult {
     case success(UserInfo)
     case failure(Error)
 }
 
+//MARK: - Check user's info
 class MyNetworkService{
     static let checkURL = "http://ip-api.com/json/"
     

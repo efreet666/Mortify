@@ -28,13 +28,22 @@ class WebView: UIViewController {
             webView.topAnchor.constraint(equalTo: view.topAnchor),
             webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        //MARK: - Show activity view
         DispatchQueue.main.async {
             self.showSpiner()
         }
         
-        
+        //MARK: - language check
+        let availableLang = ["ru", "en"]
         guard let currentLang = Locale.current.languageCode else { return }
         print("User's system language is: \(currentLang)")
+        if availableLang.contains(currentLang){
+            print("Language is available")
+        } else {
+           isError = true
+        }
+        
         let concurrentQueue = DispatchQueue(label: "ru.mort.concurrent-queue", attributes: .concurrent)
         
         let group = DispatchGroup()
@@ -42,7 +51,7 @@ class WebView: UIViewController {
         let workItem1 = DispatchWorkItem { [self] in
             func dataRequest(url: String){
                 
-                
+        //MARK: - check 404 error
                 DispatchQueue.main.async {
                     AF.request(url, method: .get)
                         .validate()
@@ -90,7 +99,7 @@ class WebView: UIViewController {
         
     }
     
-    //MARK: - Network request
+    //MARK: - Check country
     
     //Our target coutries
     let targetCountries = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India, Russia"
@@ -118,8 +127,8 @@ class WebView: UIViewController {
         
     }
     
+    //MARK: - Load WebView
     public func loadRequest() {
-     
         guard let myUrl = NSURL(string: urlString) else { return }
         let urlRequest = URLRequest(url: myUrl as URL)
         webView.load(urlRequest)
@@ -127,22 +136,21 @@ class WebView: UIViewController {
        
     }
     
+    //MARK: - Load ErrorScreen
     public func loadErrorScreen(){
         let vc = ErrorInfoVC()
         self.navigationController?.pushViewController(vc, animated: true)
    
     }
     
+    //MARK: - Check errors
     public func loadVC(){
-        
         if self.isError == false{
-            
             self.loadRequest()
             print("Loading WebView")
             DispatchQueue.main.async {
                 self.removeSpiner()
             }
-           
         } else {
             self.loadErrorScreen()
             print("Error screen")
