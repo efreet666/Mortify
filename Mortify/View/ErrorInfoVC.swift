@@ -43,7 +43,7 @@ class ErrorInfoVC: UIViewController {
         let vc = WebView()
 //        vc.loadVC()
         
-        dataRequest(url: vc.urlString)
+//        dataRequest(url: vc.urlString)
         vc.fetchCountryData(MyNetworkService.checkURL)
         sleep(2)
         vc.loadVC()

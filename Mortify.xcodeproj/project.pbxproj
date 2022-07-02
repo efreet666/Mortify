@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F50C31E62870A4C300BD5A9A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C31E52870A4C300BD5A9A /* Util.swift */; };
 		F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA71285C80D200BD356D /* AppDelegate.swift */; };
 		F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA73285C80D200BD356D /* SceneDelegate.swift */; };
 		F543BA79285C80D200BD356D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F543BA77285C80D200BD356D /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		F543BA89285C80D500BD356D /* MortifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA88285C80D500BD356D /* MortifyTests.swift */; };
 		F543BA93285C80D500BD356D /* MortifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA92285C80D500BD356D /* MortifyUITests.swift */; };
 		F543BA95285C80D500BD356D /* MortifyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA94285C80D500BD356D /* MortifyUITestsLaunchTests.swift */; };
-		F543BAA4285C8D1200BD356D /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BAA3285C8D1200BD356D /* PersonTableViewController.swift */; };
 		F5D6930D285CFA1800150E20 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */; };
 		F5D6930E285CFA1800150E20 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5D69311285CFADB00150E20 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D69310285CFADB00150E20 /* Networking.swift */; };
@@ -56,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F50C31E52870A4C300BD5A9A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		F543BA6E285C80D200BD356D /* Mortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F543BA71285C80D200BD356D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F543BA73285C80D200BD356D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		F543BA8E285C80D500BD356D /* MortifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MortifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F543BA92285C80D500BD356D /* MortifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortifyUITests.swift; sourceTree = "<group>"; };
 		F543BA94285C80D500BD356D /* MortifyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortifyUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F543BAA3285C8D1200BD356D /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		F5D69310285CFADB00150E20 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F5D69312285E68DA00150E20 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
@@ -102,10 +102,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F50C31E328709BEE00BD5A9A /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F543BA77285C80D200BD356D /* Main.storyboard */,
+				F543BA7A285C80D500BD356D /* Assets.xcassets */,
+				F543BA7C285C80D500BD356D /* LaunchScreen.storyboard */,
+				F543BA71285C80D200BD356D /* AppDelegate.swift */,
+				F543BA73285C80D200BD356D /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		F50C31E428709C0800BD5A9A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F5D69310285CFADB00150E20 /* Networking.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		F543BA65285C80D200BD356D = {
 			isa = PBXGroup;
 			children = (
 				F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */,
+				F50C31E52870A4C300BD5A9A /* Util.swift */,
 				F543BA70285C80D200BD356D /* Mortify */,
 				F543BA87285C80D500BD356D /* MortifyTests */,
 				F543BA91285C80D500BD356D /* MortifyUITests */,
@@ -126,17 +147,11 @@
 		F543BA70285C80D200BD356D /* Mortify */ = {
 			isa = PBXGroup;
 			children = (
-				F5D69310285CFADB00150E20 /* Networking.swift */,
-				F5D8C0B828637E5500B5E907 /* WebView.swift */,
-				F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */,
+				F543BA7F285C80D500BD356D /* Info.plist */,
+				F50C31E428709C0800BD5A9A /* Network */,
 				F543BAA2285C8CB100BD356D /* View */,
 				F543BAA1285C8CA300BD356D /* Model */,
-				F543BA77285C80D200BD356D /* Main.storyboard */,
-				F543BA7A285C80D500BD356D /* Assets.xcassets */,
-				F543BA7C285C80D500BD356D /* LaunchScreen.storyboard */,
-				F543BA71285C80D200BD356D /* AppDelegate.swift */,
-				F543BA73285C80D200BD356D /* SceneDelegate.swift */,
-				F543BA7F285C80D500BD356D /* Info.plist */,
+				F50C31E328709BEE00BD5A9A /* Support */,
 			);
 			path = Mortify;
 			sourceTree = "<group>";
@@ -169,7 +184,8 @@
 		F543BAA2285C8CB100BD356D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F543BAA3285C8D1200BD356D /* PersonTableViewController.swift */,
+				F5D8C0B828637E5500B5E907 /* WebView.swift */,
+				F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,11 +322,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F543BAA4285C8D1200BD356D /* PersonTableViewController.swift in Sources */,
 				F5D69311285CFADB00150E20 /* Networking.swift in Sources */,
 				F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */,
 				F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */,
 				F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */,
+				F50C31E62870A4C300BD5A9A /* Util.swift in Sources */,
 				F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */,
 				F5D8C0B928637E5500B5E907 /* WebView.swift in Sources */,
 			);

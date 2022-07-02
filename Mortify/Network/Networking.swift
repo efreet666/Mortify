@@ -9,36 +9,14 @@ import Foundation
 import Alamofire
 
 public var URL = "https://kireas.store/T7T5NT7p"
-public var isError: Bool = false
+public var isError: Bool?
 public var anotherCountry = false
-
-
 
 enum ObtainResult {
     case success(UserInfo)
     case failure(Error)
 }
 
-public func dataRequest(url: String){
-    AF.request(url, method: .get)
-        .validate()
-        .responseJSON{ dataResponse in
-            switch dataResponse.result{
-            case .success(let value):
-                print(value)
-                isError = false
-                
-                print("Успешно")
-            case .failure(let error):
-                if error.localizedDescription == "Response status code was unacceptable: 404." {
-                    isError = true
-                    print("Ошибка 404")
-                }
-            }
-            
-        }
-    
-}
 class MyNetworkService{
     static let checkURL = "http://ip-api.com/json/"
     
