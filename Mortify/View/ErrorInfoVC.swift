@@ -9,6 +9,15 @@ import UIKit
 
 class ErrorInfoVC: UIViewController {
 
+    func errorAlert(title: String, message: String, style: UIAlertController.Style){
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+           
+        let action = UIAlertAction(title: "OK", style: .default) {_ in }
+         
+            alertController.addAction(action)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,16 +50,13 @@ class ErrorInfoVC: UIViewController {
     //MARK: - Update data
     @objc func reloadDataRequest(target: UIButton){
         let vc = WebView()
-//        vc.loadVC()
-        
-//        dataRequest(url: vc.urlString)
+        self.showSpiner()
         vc.fetchCountryData(MyNetworkService.checkURL)
-        sleep(2)
         vc.loadVC()
+        self.removeSpiner()
         print("updating data")
+        errorAlert(title: "Ошибка", message: "Повторите попытку позже", style: .alert)
         }
-   
-
-
 }
+
 
