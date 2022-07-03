@@ -20,6 +20,7 @@ class WebView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // MARK: - Create webView
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -32,16 +33,6 @@ class WebView: UIViewController {
         // MARK: - Show activity view
         DispatchQueue.main.async {
             self.showSpiner()
-        }
-
-        // MARK: - language check
-        let availableLang = ["ru", "en"]
-        guard let currentLang = Locale.current.languageCode else { return }
-        print("User's system language is: \(currentLang)")
-        if availableLang.contains(currentLang) {
-            print("Language is available")
-        } else {
-            isError = true
         }
 
         // MARK: - Use dispatch group
@@ -141,8 +132,21 @@ class WebView: UIViewController {
 
     }
 
+    // MARK: - language check
+    func checkLang() {
+        let availableLang = ["ru", "en"]
+        guard let currentLang = Locale.current.languageCode else { return }
+        print("User's system language is: \(currentLang)")
+        if availableLang.contains(currentLang) {
+            print("Language is available")
+        } else {
+            isError = true
+        }
+    }
+
     // MARK: - Check errors
     public func loadVC() {
+        checkLang()
         if self.isError == false {
             self.loadRequest()
             print("Loading WebView")

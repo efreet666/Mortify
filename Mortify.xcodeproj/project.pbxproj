@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F50C31E62870A4C300BD5A9A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C31E52870A4C300BD5A9A /* ActivityView.swift */; };
+		F50C31EC28720C3200BD5A9A /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C31EB28720C3200BD5A9A /* Controller.swift */; };
 		F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA71285C80D200BD356D /* AppDelegate.swift */; };
 		F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA73285C80D200BD356D /* SceneDelegate.swift */; };
 		F543BA79285C80D200BD356D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F543BA77285C80D200BD356D /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		F50C31E52870A4C300BD5A9A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		F50C31EB28720C3200BD5A9A /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		F543BA6E285C80D200BD356D /* Mortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F543BA71285C80D200BD356D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F543BA73285C80D200BD356D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		F50C31ED28720C3F00BD5A9A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F50C31EB28720C3200BD5A9A /* Controller.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		F543BA65285C80D200BD356D = {
 			isa = PBXGroup;
 			children = (
@@ -147,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				F543BA7F285C80D500BD356D /* Info.plist */,
-				F50C31E428709C0800BD5A9A /* Network */,
+				F50C31ED28720C3F00BD5A9A /* Controllers */,
 				F543BAA2285C8CB100BD356D /* View */,
 				F543BAA1285C8CA300BD356D /* Model */,
 				F50C31E328709BEE00BD5A9A /* Support */,
@@ -175,6 +185,7 @@
 		F543BAA1285C8CA300BD356D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F50C31E428709C0800BD5A9A /* Network */,
 				F5D69312285E68DA00150E20 /* ApiModel.swift */,
 			);
 			path = Model;
@@ -350,6 +361,7 @@
 				F50C31E62870A4C300BD5A9A /* ActivityView.swift in Sources */,
 				F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */,
 				F5D8C0B928637E5500B5E907 /* WebView.swift in Sources */,
+				F50C31EC28720C3200BD5A9A /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
