@@ -48,10 +48,10 @@ class ErrorInfoVC: UIViewController {
 
     // MARK: - Update data
     @objc func reloadDataRequest(target: UIButton) {
-        let vc = WebView()
+        let myWebView = WebView()
         self.showSpiner()
-        vc.fetchCountryData(MyNetworkService.checkURL)
-        vc.loadVC()
+        myWebView.fetchCountryData(MyNetworkService.checkURL)
+        myWebView.loadVC()
         self.removeSpiner()
         print("updating data")
         errorAlert(title: "Ошибка", message: "Повторите попытку позже", style: .alert)

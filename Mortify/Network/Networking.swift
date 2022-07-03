@@ -19,8 +19,7 @@ enum ObtainResult {
 class MyNetworkService {
     static let checkURL = "http://ip-api.com/json/"
     class func fetchData(_ pageUrl: String, completion: @escaping (ObtainResult) -> Void) {
-        AF.request(pageUrl).responseDecodable(of: UserInfo.self) {
-            responseJson in
+        AF.request(pageUrl).responseDecodable(of: UserInfo.self) { responseJson in
             switch responseJson.result {
             case .success(let json):
                 completion(.success(json))

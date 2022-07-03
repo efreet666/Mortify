@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F50C31E62870A4C300BD5A9A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C31E52870A4C300BD5A9A /* Util.swift */; };
+		F50C31E62870A4C300BD5A9A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C31E52870A4C300BD5A9A /* ActivityView.swift */; };
 		F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA71285C80D200BD356D /* AppDelegate.swift */; };
 		F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543BA73285C80D200BD356D /* SceneDelegate.swift */; };
 		F543BA79285C80D200BD356D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F543BA77285C80D200BD356D /* Main.storyboard */; };
@@ -56,7 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F50C31E52870A4C300BD5A9A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		F50C31E52870A4C300BD5A9A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		F543BA6E285C80D200BD356D /* Mortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F543BA71285C80D200BD356D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F543BA73285C80D200BD356D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */,
-				F50C31E52870A4C300BD5A9A /* Util.swift */,
 				F543BA70285C80D200BD356D /* Mortify */,
 				F543BA87285C80D500BD356D /* MortifyTests */,
 				F543BA91285C80D500BD356D /* MortifyUITests */,
@@ -186,6 +185,7 @@
 			children = (
 				F5D8C0B828637E5500B5E907 /* WebView.swift */,
 				F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */,
+				F50C31E52870A4C300BD5A9A /* ActivityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 				F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */,
 				F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */,
 				F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */,
-				F50C31E62870A4C300BD5A9A /* Util.swift in Sources */,
+				F50C31E62870A4C300BD5A9A /* ActivityView.swift in Sources */,
 				F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */,
 				F5D8C0B928637E5500B5E907 /* WebView.swift in Sources */,
 			);

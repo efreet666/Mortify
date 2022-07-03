@@ -22,7 +22,6 @@ class WebView: UIViewController {
 
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -45,6 +44,7 @@ class WebView: UIViewController {
             isError = true
         }
 
+        // MARK: - Use dispatch group
         let concurrentQueue = DispatchQueue(label: "ru.mort.concurrent-queue", attributes: .concurrent)
 
         let group = DispatchGroup()
@@ -68,16 +68,13 @@ class WebView: UIViewController {
                                     self.isError = true
                                     print("Ошибка 404")
                                     self.loadVC()
-
                                 }
                             }
-
                         }
                 }
             }
             dataRequest(url: self.urlString)
             print("dataRequest is loading")
-
             group.leave()
 
         }
@@ -110,6 +107,7 @@ class WebView: UIViewController {
             MyNetworkService.fetchData(pageUrl) { [weak self] result in
                 switch result {
                 case .success(let infoDataModel):
+                    // Decode response into data model
                     self?.country = infoDataModel.country
                     guard let userCountry = self?.country else { return }
                     print("User's country: \(userCountry)")
@@ -137,9 +135,9 @@ class WebView: UIViewController {
     }
 
     // MARK: - Load ErrorScreen
-    public func loadErrorScreen() {
-        let vc = ErrorInfoVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+     func loadErrorScreen() {
+        let errorVC = ErrorInfoVC()
+        self.navigationController?.pushViewController(errorVC, animated: false)
 
     }
 
