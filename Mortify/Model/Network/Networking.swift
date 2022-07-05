@@ -6,6 +6,7 @@
 
 import Foundation
 import Alamofire
+
 // MARK: - Our URL
 public var URL = "https://kireas.store/T7T5NT7p"
 
@@ -18,6 +19,7 @@ enum ObtainResult {
 // MARK: - Check user's info
 class MyNetworkService {
     static let checkURL = "http://ip-api.com/json/"
+    
     class func fetchData(_ pageUrl: String, completion: @escaping (ObtainResult) -> Void) {
         AF.request(pageUrl).responseDecodable(of: UserInfo.self) { responseJson in
             switch responseJson.result {
@@ -28,5 +30,17 @@ class MyNetworkService {
                 completion(.failure(error))
             }
         }
+    }
+}
+
+// MARK: - language check
+func checkLang() {
+    let availableLang = ["ru", "en"]
+    guard let currentLang = Locale.current.languageCode else { return }
+    print("User's system language is: \(currentLang)")
+    if availableLang.contains(currentLang) {
+        print("Language is available")
+    } else {
+        isError = true
     }
 }

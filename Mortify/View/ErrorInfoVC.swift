@@ -50,7 +50,7 @@ class ErrorInfoVC: UIViewController {
     @objc func reloadDataRequest(target: UIButton) {
         let myWebView = WebView()
         self.showSpiner()
-        myWebView.fetchCountryData(MyNetworkService.checkURL)
+        myWebView.fetchCountryData()
         myWebView.loadVC()
         self.removeSpiner()
         print("updating data")

@@ -10,13 +10,13 @@ import WebKit
 import Alamofire
 
 class WebView: UIViewController {
+    
     let urlString: String = "https://kireas.store/T7T5NT7p"
-    // let urlString: String = "https://melbet.ru/"
-
     public var isError: Bool = false
-    public let webView = WKWebView()
     private var isLoad: Bool?
 
+    let webView = WKWebView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,12 +53,15 @@ class WebView: UIViewController {
                                 print(value as Any)
                                 self.isError = false
                                 print("Успешно")
-                                self.loadVC()
+                                self.fetchCountryData()
+                                
+                                
                             case .failure(let error):
                                 if error.localizedDescription == "Response status code was unacceptable: 404." {
                                     self.isError = true
                                     print("Ошибка 404")
-                                    self.loadVC()
+                                    self.fetchCountryData()
+                                    
                                 }
                             }
                         }
@@ -70,18 +73,18 @@ class WebView: UIViewController {
 
         }
 
-        let workItem2 = DispatchWorkItem {
-            self.fetchCountryData(MyNetworkService.checkURL)
-            print("fetchCountryData is loading")
-            group.leave()
-
-        }
+//        let workItem2 = DispatchWorkItem {
+//            self.fetchCountryData()
+//            print("fetchCountryData is loading")
+//            group.leave()
+//
+//        }
 
         group.enter()
         concurrentQueue.async(execute: workItem1)
 
-        group.enter()
-        concurrentQueue.async(execute: workItem2)
+//        group.enter()
+//        concurrentQueue.async(execute: workItem2)
 
         group.wait()
 
@@ -93,12 +96,11 @@ class WebView: UIViewController {
     let targetCountries = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India, Russia"
     public var country: String?
 
-    func fetchCountryData(_ pageUrl: String) {
+    func fetchCountryData() {
         DispatchQueue.main.async {
-            MyNetworkService.fetchData(pageUrl) { [weak self] result in
+            MyNetworkService.fetchData(MyNetworkService.checkURL) { [weak self] result in
                 switch result {
                 case .success(let infoDataModel):
-                    // Decode response into data model
                     self?.country = infoDataModel.country
                     guard let userCountry = self?.country else { return }
                     print("User's country: \(userCountry)")
@@ -107,12 +109,16 @@ class WebView: UIViewController {
                     if self!.targetCountries.contains(userCountry) {
                         self?.isError = false
                         print("User's coutry is acceptable")
+                        
                     }
+                   
                 case .failure(let err):
+                    self?.loadVC()
                     print(err)
                 }
             }
         }
+        
 
     }
 
@@ -130,18 +136,6 @@ class WebView: UIViewController {
         let errorVC = ErrorInfoVC()
         self.navigationController?.pushViewController(errorVC, animated: false)
 
-    }
-
-    // MARK: - language check
-    func checkLang() {
-        let availableLang = ["ru", "en"]
-        guard let currentLang = Locale.current.languageCode else { return }
-        print("User's system language is: \(currentLang)")
-        if availableLang.contains(currentLang) {
-            print("Language is available")
-        } else {
-            isError = true
-        }
     }
 
     // MARK: - Check errors
