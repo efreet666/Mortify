@@ -12,7 +12,8 @@ import Alamofire
 
 class WebView: UIViewController {
     
-    let urlString: String = "https://kireas.store/T7T5NT7p"
+    //let urlString: String = "https://kireas.store/T7T5NT7p"
+    let urlString: String = "https://melbet.ru/"
     public var isError: Bool = false
     private var isLoad: Bool?
 
@@ -49,8 +50,6 @@ class WebView: UIViewController {
         // Our target coutries
         let targetCountries = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India, Russia"
         var country: String?
-        
-        DispatchQueue.main.async {
             MyNetworkService.fetchData(MyNetworkService.checkURL) { [weak self] result in
                 switch result {
                 case .success(let infoDataModel):
@@ -58,11 +57,11 @@ class WebView: UIViewController {
                     guard let userCountry =  country else { return }
                     Swift.print("User's country: \(userCountry)")
 
-                    // Check user country
+                    // Check user's country
                     if targetCountries.contains(userCountry) {
                         self?.isError = false
                         Swift.print("User's coutry is acceptable")
-                        
+                        self?.loadVC()
                     }
                    
                 case .failure(let err):
@@ -70,35 +69,9 @@ class WebView: UIViewController {
                     Swift.print(err)
                 }
             }
-        }
     }
     
     func dataRequest(url: String) {
-
-//                // MARK: - check 404 error
-//                DispatchQueue.main.async {
-//                    AF.request(url, method: .get)
-//                        .validate()
-//                        .response { dataResponse in
-//                            switch dataResponse.result {
-//                            case .success(let value):
-//                                print(value as Any)
-//                                self.isError = false
-//                                print("Успешно")
-//                                self.fetchCountryData()
-//
-//                            case .failure(let error):
-//                                if error.localizedDescription == "Response status code was unacceptable: 404." {
-//                                    self.isError = true
-//                                    print("Ошибка 404")
-//                                    self.fetchCountryData()
-//
-//                                }
-//                            }
-//                        }
-//                }
-            
-        DispatchQueue.main.async {
             MyNetworkService.fetchUserData(url) { [weak self] result in
                 switch result {
                 case .success(let data):
@@ -113,24 +86,8 @@ class WebView: UIViewController {
                         self?.fetchCountryData()
                     }
                 }
-//                    switch result {
-//                    case .(let value):
-//                        Swift.print(value as Any)
-//                        self?.isError = false
-//                        Swift.print("Успешно")
-//                        self?.fetchCountryData()
-//
-//                    case .failure(let err):
-//                        if err.localizedDescription == "Response status code was unacceptable: 404." {
-//                            self?.isError = true
-//                            Swift.print("Ошибка 404")
-//                            self?.fetchCountryData()
-//
-//                        }
-//                    }
-                }
-            }
         }
+    }
      
 // MARK: - Load WebView
 func loadRequest() {

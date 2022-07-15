@@ -8,7 +8,8 @@ import Foundation
 import Alamofire
 
 // MARK: - Our URL
-public var URL = "https://kireas.store/T7T5NT7p"
+//public var URL = "https://kireas.store/T7T5NT7p"
+public var URL = "https://melbet.ru/"
 
 public var isError: Bool?
 
@@ -38,7 +39,7 @@ class MyNetworkService {
     }
     
     class func fetchUserData(_ pageUrl: String, completion: @escaping (CheckObtainResult) -> Void) {
-        AF.request(pageUrl, method: .get)
+        AF.request(pageUrl)
             .validate()
             .response { responseJson in
             switch responseJson.result {
