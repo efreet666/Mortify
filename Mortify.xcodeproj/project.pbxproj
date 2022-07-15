@@ -23,6 +23,8 @@
 		F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D69312285E68DA00150E20 /* ApiModel.swift */; };
 		F5D8C0B928637E5500B5E907 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8C0B828637E5500B5E907 /* WebViewController.swift */; };
 		F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */; };
+		F5FB4C652881D8EC00FF0649 /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5FB4C632881D8E400FF0649 /* SnapKit.xcframework */; };
+		F5FB4C662881D8EC00FF0649 /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5FB4C632881D8E400FF0649 /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F5FB4C662881D8EC00FF0649 /* SnapKit.xcframework in Embed Frameworks */,
 				F50C324F28744B6700BD5A9A /* Alamofire.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -76,6 +79,7 @@
 		F5D69312285E68DA00150E20 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		F5D8C0B828637E5500B5E907 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInfoVC.swift; sourceTree = "<group>"; };
+		F5FB4C632881D8E400FF0649 /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5FB4C652881D8EC00FF0649 /* SnapKit.xcframework in Frameworks */,
 				F50C324E28744B6700BD5A9A /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D6930B285CF9FC00150E20 /* Alamofire.xcframework */,
+				F5FB4C632881D8E400FF0649 /* SnapKit.xcframework */,
 				F543BA70285C80D200BD356D /* Mortify */,
 				F543BA87285C80D500BD356D /* MortifyTests */,
 				F543BA91285C80D500BD356D /* MortifyUITests */,

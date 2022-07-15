@@ -131,7 +131,7 @@ class WebViewController: UIViewController {
         DispatchQueue.main.async {
             self.removeSpiner()
         }
-        self.navigationController?.pushViewController(errorVC, animated: true)
+        self.navigationController?.pushViewController(errorVC, animated: false)
         print("Error screen loaded")
     }
     

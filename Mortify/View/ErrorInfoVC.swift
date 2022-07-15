@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ErrorInfoVC: UIViewController {
 
@@ -26,22 +27,84 @@ class ErrorInfoVC: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
 
         let errorLabel = UILabel()
-           errorLabel.frame = CGRect(x: 110, y: 100, width: 250, height: 150)
-               errorLabel.text = "Произошла ошибка"
-               errorLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
-               self.view.addSubview(errorLabel)
+        errorLabel.text = "Произошла ошибка"
+        errorLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
+        errorLabel.textAlignment = .center
+        self.view.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(80)
+            make.trailing.leading.equalToSuperview().inset(50)
+            make.height.equalTo(50)
+        }
+        
+        // MARK: - Quiz task
+        
+        let quizLabel = UILabel()
+        quizLabel.text = "Задача 1"
+        quizLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
+        quizLabel.textAlignment = .center
+        self.view.addSubview(quizLabel)
+        quizLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(200)
+            make.trailing.leading.equalToSuperview().inset(50)
+            make.height.equalTo(50)
+        }
+        
+        // MARK: - Answer buttons
+        let answerButton1 = UIButton()
+        answerButton1.setTitle("Ответ 1", for: .normal)
+        answerButton1.setTitleColor(.gray, for: .selected)
+        answerButton1.backgroundColor = .orange
+               self.view.addSubview(answerButton1)
+        answerButton1.snp.makeConstraints { make in
+            make.top.equalTo(quizLabel).offset(70)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(50)
+        }
 
-        let errorImage = UIImageView()
-        errorImage.frame = CGRect(x: 25, y: 200, width: 350, height: 350)
-        errorImage.image = UIImage(named: "1")
-        errorImage.contentMode = .scaleAspectFit
-               self.view.addSubview(errorImage)
-
+        let answerButton2 = UIButton()
+        answerButton2.setTitle("Ответ 2", for: .normal)
+        answerButton2.setTitleColor(.gray, for: .selected)
+        answerButton2.backgroundColor = .orange
+               self.view.addSubview(answerButton2)
+        answerButton2.snp.makeConstraints { make in
+            make.top.equalTo(answerButton1).offset(70)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(50)
+        }
+        
+        let answerButton3 = UIButton()
+        answerButton3.setTitle("Ответ 3", for: .normal)
+        answerButton3.setTitleColor(.gray, for: .selected)
+        answerButton3.backgroundColor = .orange
+               self.view.addSubview(answerButton3)
+        answerButton3.snp.makeConstraints { make in
+            make.top.equalTo(answerButton2).offset(70)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(50)
+        }
+        
+        let answerButton4 = UIButton()
+        answerButton4.setTitle("Ответ 4 ", for: .normal)
+        answerButton4.setTitleColor(.gray, for: .selected)
+        answerButton4.backgroundColor = .orange
+               self.view.addSubview(answerButton4)
+        answerButton4.snp.makeConstraints { make in
+            make.top.equalTo(answerButton3).offset(70)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(50)
+        }
+        
         let reloadDataButton = UIButton()
-        reloadDataButton.frame = CGRect(x: 25, y: self.view.frame.size.height - 200, width: self.view.frame.size.width - 50, height: 50)
         reloadDataButton.setTitle("Обновить", for: .normal)
+        reloadDataButton.setTitleColor(.gray, for: .selected)
         reloadDataButton.backgroundColor = .orange
                self.view.addSubview(reloadDataButton)
+        reloadDataButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-50)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(50)
+        }
         reloadDataButton.addTarget(self, action: #selector(reloadDataRequest), for: .touchUpInside)
 
     }
@@ -50,8 +113,7 @@ class ErrorInfoVC: UIViewController {
     @objc func reloadDataRequest(target: UIButton) {
         let myWebView = WebViewController()
         self.showSpiner()
-        myWebView.fetchCountryData()
-        myWebView.loadVC()
+        myWebView.dataRequest()
         self.removeSpiner()
         print("updating data")
         errorAlert(title: "Ошибка", message: "Повторите попытку позже", style: .alert)
