@@ -5,8 +5,10 @@
 //  Created by Влад Бокин on 02.07.2022.
 //
 
-import Foundation
 import UIKit
+
+
+//MARK: - Activity view indicator
 
 private var aView: UIView?
 

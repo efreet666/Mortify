@@ -48,7 +48,7 @@ class ErrorInfoVC: UIViewController {
 
     // MARK: - Update data
     @objc func reloadDataRequest(target: UIButton) {
-        let myWebView = WebView()
+        let myWebView = WebViewController()
         self.showSpiner()
         myWebView.fetchCountryData()
         myWebView.loadVC()

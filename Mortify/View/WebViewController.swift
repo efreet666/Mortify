@@ -5,18 +5,17 @@
 //  Created by Влад Бокин on 22.06.2022.
 //
 
-import Foundation
 import UIKit
 import WebKit
 
-class WebView: UIViewController {
+class WebViewController: UIViewController {
     
     public var isError: Bool = false
     private var isLoad: Bool?
     
     let webView = WKWebView()
     
-    //MARK: - Hide navigation bar
+    // MARK: - Hide navigation bar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -29,19 +28,17 @@ class WebView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupWebView()
         
-        setup()
-        dataRequest()
-        
-        print("dataRequest is loading")
         // MARK: - Show activity view
         DispatchQueue.main.async {
+            self.dataRequest()
             self.showSpiner()
         }
         
     }
     // MARK: - Create webView
-    func setup() {
+    func setupWebView() {
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -65,10 +62,12 @@ class WebView: UIViewController {
             case .failure(let error):
                 if error.localizedDescription == "Response status code was unacceptable: 404." {
                     self?.isError = true
-                    Swift.print("Ошибка 404")
+                    print("Ошибка 404")
                     self?.loadErrorScreen()
                 } else {
-                    self?.fetchCountryData()
+                    print("error.localizedDescription")
+                    self?.loadErrorScreen()
+                   // self?.fetchCountryData()
                 }
             }
         }
@@ -80,29 +79,31 @@ class WebView: UIViewController {
         // Our target coutries
         let targetCountries = "Kazakhstan, Turkey, Azerbaijan, Uzbekistan, Ukraine, India, Russia"
         var country: String?
+        
         MyNetworkService.fetchData(MyNetworkService.checkURL) { [weak self] result in
             switch result {
             case .success(let infoDataModel):
                 country = infoDataModel.country
                 guard let userCountry =  country else { return }
-                Swift.print("User's country: \(userCountry)")
+                print("User's country: \(userCountry)")
                 
                 // Check user's country
                 if targetCountries.contains(userCountry) {
                     self?.isError = false
-                    Swift.print("User's coutry is acceptable")
+                    print("User's coutry is acceptable")
                     self?.loadVC()
                 }
                 
             case .failure(let err):
-                self?.loadVC()
-                Swift.print(err)
+                self?.loadErrorScreen()
+                print(err)
             }
         }
     }
     
     // MARK: - Load WebView
-    func loadRequest() {
+    func loadWebView() {
+        
         guard let myUrl = NSURL(string: MyNetworkService.URL) else { return }
         let urlRequest = URLRequest(url: myUrl as URL)
         webView.load(urlRequest)
@@ -123,6 +124,7 @@ class WebView: UIViewController {
             }
         }
     }
+    
     // MARK: - Load ErrorScreen
     func loadErrorScreen() {
         let errorVC = ErrorInfoVC()
@@ -135,14 +137,11 @@ class WebView: UIViewController {
     
     // MARK: - Check errors
     func loadVC() {
-        checkLang()
-        if self.isError == false {
-            loadRequest()
-            print("Loading WebView")
+        let langIsSupport = checkLang()
+        if langIsSupport == true && isError == false {
+            loadWebView()
         } else {
             loadErrorScreen()
-            print("Error screen")
-            self.removeSpiner()
         }
     }
     

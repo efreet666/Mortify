@@ -7,8 +7,6 @@
 import Foundation
 import Alamofire
 
-//public var isError: Bool?
-
 enum ObtainResult {
     case success(UserInfo)
     case failure(Error)
@@ -26,8 +24,8 @@ class MyNetworkService {
     static let checkURL = "http://ip-api.com/json/"
     
     // Melbet url
-    //static let URL = "https://kireas.store/T7T5NT7p"
-    static let URL = "https://melbet.ru/"
+    static let URL = "https://kireas.store/T7T5NT7p"
+    // static let URL = "https://melbet.ru/"
     
     class func fetchData(_ pageUrl: String, completion: @escaping (ObtainResult) -> Void) {
         AF.request(pageUrl).responseDecodable(of: UserInfo.self) { responseJson in
@@ -57,14 +55,19 @@ class MyNetworkService {
 }
 
 // MARK: - language check
-func checkLang() {
+func checkLang() -> Bool {
+    
+    // supported languages
     let availableLang = ["ru", "en"]
-    guard let currentLang = Locale.current.languageCode else { return }
+    
+    guard let currentLang = Locale.current.languageCode else { return false}
     print("User's system language is: \(currentLang)")
     if availableLang.contains(currentLang) {
         print("Language is available")
+        return true
     } else {
-        let webView = WebView()
-        webView.isError = true
+        print("Language isn't supported")
+        return false
     }
+    
 }
