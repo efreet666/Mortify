@@ -7,11 +7,7 @@
 import Foundation
 import Alamofire
 
-
-public var URL = "https://kireas.store/T7T5NT7p"
-//public var URL = "https://melbet.ru/"
-
-public var isError: Bool?
+//public var isError: Bool?
 
 enum ObtainResult {
     case success(UserInfo)
@@ -68,6 +64,7 @@ func checkLang() {
     if availableLang.contains(currentLang) {
         print("Language is available")
     } else {
-        isError = true
+        let webView = WebView()
+        webView.isError = true
     }
 }
