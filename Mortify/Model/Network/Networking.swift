@@ -7,9 +7,9 @@
 import Foundation
 import Alamofire
 
-// MARK: - Our URL
-//public var URL = "https://kireas.store/T7T5NT7p"
-public var URL = "https://melbet.ru/"
+
+public var URL = "https://kireas.store/T7T5NT7p"
+//public var URL = "https://melbet.ru/"
 
 public var isError: Bool?
 
@@ -24,7 +24,14 @@ enum CheckObtainResult {
 }
 // MARK: - Check user's info
 class MyNetworkService {
+    // MARK: - Our URL
+    
+    // Check user's data
     static let checkURL = "http://ip-api.com/json/"
+    
+    // Melbet url
+    //static let URL = "https://kireas.store/T7T5NT7p"
+    static let URL = "https://melbet.ru/"
     
     class func fetchData(_ pageUrl: String, completion: @escaping (ObtainResult) -> Void) {
         AF.request(pageUrl).responseDecodable(of: UserInfo.self) { responseJson in

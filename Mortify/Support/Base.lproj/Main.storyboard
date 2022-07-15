@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pMR-23-Biu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Smb-7i-TvC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -11,7 +11,7 @@
         <!--Web View-->
         <scene sceneID="qUa-7F-zOu">
             <objects>
-                <viewController id="pMR-23-Biu" customClass="WebView" customModule="Mortify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController interfaceStyle="dark" id="pMR-23-Biu" customClass="WebView" customModule="Mortify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZWg-ah-VMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,10 +19,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="D4L-E9-uxT"/>
+                    <connections>
+                        <segue destination="hXT-FI-h7j" kind="show" id="EMN-8j-WAq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gay-1u-Sbd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-209" y="71"/>
+            <point key="canvasLocation" x="700" y="70.982142857142847"/>
         </scene>
         <!--Error InfoVC-->
         <scene sceneID="YbB-3q-PdX">
@@ -38,7 +41,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cx-SQ-1NS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="71"/>
+            <point key="canvasLocation" x="1697.1014492753625" y="70.982142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ubu-Zi-IfY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Smb-7i-TvC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MY3-Hc-iuv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pMR-23-Biu" kind="relationship" relationship="rootViewController" id="GoJ-Zf-Uny"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r84-tV-ZKo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-210.1449275362319" y="70.982142857142847"/>
         </scene>
     </scenes>
     <resources>
