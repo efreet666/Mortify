@@ -16,6 +16,11 @@ enum ObtainResult {
     case success(UserInfo)
     case failure(Error)
 }
+
+enum CheckObtainResult {
+    case success(Any)
+    case failure(Error)
+}
 // MARK: - Check user's info
 class MyNetworkService {
     static let checkURL = "http://ip-api.com/json/"
@@ -28,6 +33,20 @@ class MyNetworkService {
                 print(completion(.success(json)))
             case .failure(let error):
                 completion(.failure(error))
+            }
+        }
+    }
+    
+    class func fetchUserData(_ pageUrl: String, completion: @escaping (CheckObtainResult) -> Void) {
+        AF.request(pageUrl, method: .get)
+            .validate()
+            .response { responseJson in
+            switch responseJson.result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                completion(.success(data as Any))
+                
             }
         }
     }

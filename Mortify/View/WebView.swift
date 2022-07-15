@@ -98,23 +98,36 @@ class WebView: UIViewController {
 //                        }
 //                }
             
-            DispatchQueue.main.async {
-                MyNetworkService.fetchData(url) { [weak self] result in
-                    switch result {
-                    case .success(let value):
-                        Swift.print(value as Any)
-                        self?.isError = false
-                        Swift.print("Успешно")
+        DispatchQueue.main.async {
+            MyNetworkService.fetchUserData(url) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    print(data as Any)
+                    self?.isError = false
+                    print("URL is working")
+                    self?.fetchCountryData()
+                case .failure(let error):
+                    if error.localizedDescription == "Response status code was unacceptable: 404." {
+                        self?.isError = true
+                        Swift.print("Ошибка 404")
                         self?.fetchCountryData()
-
-                    case .failure(let err):
-                        if err.localizedDescription == "Response status code was unacceptable: 404." {
-                            self?.isError = true
-                            Swift.print("Ошибка 404")
-                            self?.fetchCountryData()
-                            
-                        }
                     }
+                }
+//                    switch result {
+//                    case .(let value):
+//                        Swift.print(value as Any)
+//                        self?.isError = false
+//                        Swift.print("Успешно")
+//                        self?.fetchCountryData()
+//
+//                    case .failure(let err):
+//                        if err.localizedDescription == "Response status code was unacceptable: 404." {
+//                            self?.isError = true
+//                            Swift.print("Ошибка 404")
+//                            self?.fetchCountryData()
+//
+//                        }
+//                    }
                 }
             }
         }
