@@ -9,7 +9,10 @@ import UIKit
 import SnapKit
 
 class ErrorInfoVC: UIViewController {
-
+    
+    var numberOfQuestion = 0
+    let data = quizData[numberOfQuestion]
+    
     // MARK: - Error alert
     public func errorAlert(title: String, message: String, style: UIAlertController.Style) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
@@ -40,12 +43,15 @@ class ErrorInfoVC: UIViewController {
         }
         
         //quiz
-        quizSetup()
+        
+        
+        quizSetup(data: data)
     }
 
-    func quizSetup() {
+    func quizSetup(data: QuizModel) {
         // MARK: - Quiz task
         
+
         let quizLabel = UILabel()
         quizLabel.text = "Задача 1"
         quizLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)
@@ -83,7 +89,9 @@ class ErrorInfoVC: UIViewController {
             make.trailing.leading.equalToSuperview().inset(25)
             make.height.equalTo(50)
         }
-       // answerButton2.addTarget(self, action: #selector(tapAnswerButton(tag: 2)), for: .touchUpInside)
+        answerButton2.tag = 2
+        answerButton2.addTarget(self, action: #selector(tapAnswerButton(button:)), for: .touchUpInside)
+        
         
         let answerButton3 = UIButton()
         answerButton3.setTitle("Ответ 3", for: .normal)
@@ -95,7 +103,8 @@ class ErrorInfoVC: UIViewController {
             make.trailing.leading.equalToSuperview().inset(25)
             make.height.equalTo(50)
         }
-        //answerButton3.addTarget(self, action: #selector(tapAnswerButton(tag: 3)), for: .touchUpInside)
+        answerButton3.tag = 3
+        answerButton3.addTarget(self, action: #selector(tapAnswerButton(button:)), for: .touchUpInside)
         
         let answerButton4 = UIButton()
         answerButton4.setTitle("Ответ 4 ", for: .normal)
@@ -107,7 +116,20 @@ class ErrorInfoVC: UIViewController {
             make.trailing.leading.equalToSuperview().inset(25)
             make.height.equalTo(50)
         }
-       // answerButton4.addTarget(self, action: #selector(tapAnswerButton(tag: 4)), for: .touchUpInside)
+        answerButton4.tag = 4
+        answerButton4.addTarget(self, action: #selector(tapAnswerButton(button:)), for: .touchUpInside)
+        
+        let correctInfoLabel = UILabel()
+        correctInfoLabel.text = ""
+        correctInfoLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)
+        correctInfoLabel.textAlignment = .center
+        correctInfoLabel.numberOfLines = 1
+        self.view.addSubview(correctInfoLabel)
+        correctInfoLabel.snp.makeConstraints { make in
+            make.top.equalTo(answerButton4).offset(150)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(100)
+        }
         
         let reloadDataButton = UIButton()
         reloadDataButton.setTitle("Обновить", for: .normal)
@@ -121,24 +143,19 @@ class ErrorInfoVC: UIViewController {
         }
         reloadDataButton.addTarget(self, action: #selector(reloadDataRequest), for: .touchUpInside)
 
-        func loadQuiz() {
+        func loadQuiz(data: QuizModel) {
     
-            var numberOfQuestion = 0
-            let data = quizData[numberOfQuestion]
-            
-            func loadQuistion(data: QuizModel) {
                 quizLabel.text = data.question
                 answerButton1.setTitle(data.answer1, for: .normal)
                 answerButton2.setTitle(data.answer2, for: .normal)
                 answerButton3.setTitle(data.answer3, for: .normal)
                 answerButton4.setTitle(data.answer4, for: .normal)
-            }
-            loadQuistion(data: data)
             
         }
         
-        loadQuiz()
+        loadQuiz(data: data)
     }
+    
     
     // MARK: - Update data
     @objc func reloadDataRequest(target: UIButton) {
@@ -151,7 +168,8 @@ class ErrorInfoVC: UIViewController {
         }
     
     @objc func tapAnswerButton(button: UIButton) {
-        print("button is", button.tag)
+       if tag =
+            
     }
     
 }
