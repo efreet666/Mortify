@@ -25,6 +25,7 @@
 		F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */; };
 		F5FB4C652881D8EC00FF0649 /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5FB4C632881D8E400FF0649 /* SnapKit.xcframework */; };
 		F5FB4C662881D8EC00FF0649 /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5FB4C632881D8E400FF0649 /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5FB4C692882FDE400FF0649 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB4C682882FDE400FF0649 /* QuizModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		F5D8C0B828637E5500B5E907 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInfoVC.swift; sourceTree = "<group>"; };
 		F5FB4C632881D8E400FF0649 /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
+		F5FB4C682882FDE400FF0649 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		F543BAA1285C8CA300BD356D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F5FB4C682882FDE400FF0649 /* QuizModel.swift */,
 				F50C31E428709C0800BD5A9A /* Network */,
 				F5D69312285E68DA00150E20 /* ApiModel.swift */,
 			);
@@ -201,10 +204,18 @@
 			isa = PBXGroup;
 			children = (
 				F5D8C0B828637E5500B5E907 /* WebViewController.swift */,
-				F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */,
+				F5FB4C672882FDC200FF0649 /* ErrorVC */,
 				F50C31E52870A4C300BD5A9A /* ActivityView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F5FB4C672882FDC200FF0649 /* ErrorVC */ = {
+			isa = PBXGroup;
+			children = (
+				F5D8C0BA28639A7A00B5E907 /* ErrorInfoVC.swift */,
+			);
+			path = ErrorVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +375,7 @@
 				F5D8C0BB28639A7A00B5E907 /* ErrorInfoVC.swift in Sources */,
 				F543BA72285C80D200BD356D /* AppDelegate.swift in Sources */,
 				F5D69313285E68DB00150E20 /* ApiModel.swift in Sources */,
+				F5FB4C692882FDE400FF0649 /* QuizModel.swift in Sources */,
 				F50C31E62870A4C300BD5A9A /* ActivityView.swift in Sources */,
 				F543BA74285C80D200BD356D /* SceneDelegate.swift in Sources */,
 				F5D8C0B928637E5500B5E907 /* WebViewController.swift in Sources */,

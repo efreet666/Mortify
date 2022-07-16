@@ -23,6 +23,8 @@ class ErrorInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        errorAlert(title: "Ошибка", message: "Повторите попытку позже", style: .alert)
+        
         // MARK: - Create elements
         self.navigationItem.setHidesBackButton(true, animated: true)
 
@@ -37,17 +39,23 @@ class ErrorInfoVC: UIViewController {
             make.height.equalTo(50)
         }
         
+        //quiz
+        quizSetup()
+    }
+
+    func quizSetup() {
         // MARK: - Quiz task
         
         let quizLabel = UILabel()
         quizLabel.text = "Задача 1"
-        quizLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
+        quizLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)
         quizLabel.textAlignment = .center
+        quizLabel.numberOfLines = 3
         self.view.addSubview(quizLabel)
         quizLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(200)
-            make.trailing.leading.equalToSuperview().inset(50)
-            make.height.equalTo(50)
+            make.top.equalToSuperview().offset(150)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(100)
         }
         
         // MARK: - Answer buttons
@@ -57,10 +65,13 @@ class ErrorInfoVC: UIViewController {
         answerButton1.backgroundColor = .orange
                self.view.addSubview(answerButton1)
         answerButton1.snp.makeConstraints { make in
-            make.top.equalTo(quizLabel).offset(70)
+            make.top.equalTo(quizLabel).offset(120)
             make.trailing.leading.equalToSuperview().inset(25)
             make.height.equalTo(50)
         }
+        answerButton1.tag = 1
+        answerButton1.addTarget(self, action: #selector(tapAnswerButton(button:)), for: .touchUpInside)
+        
 
         let answerButton2 = UIButton()
         answerButton2.setTitle("Ответ 2", for: .normal)
@@ -72,6 +83,7 @@ class ErrorInfoVC: UIViewController {
             make.trailing.leading.equalToSuperview().inset(25)
             make.height.equalTo(50)
         }
+       // answerButton2.addTarget(self, action: #selector(tapAnswerButton(tag: 2)), for: .touchUpInside)
         
         let answerButton3 = UIButton()
         answerButton3.setTitle("Ответ 3", for: .normal)
@@ -83,6 +95,7 @@ class ErrorInfoVC: UIViewController {
             make.trailing.leading.equalToSuperview().inset(25)
             make.height.equalTo(50)
         }
+        //answerButton3.addTarget(self, action: #selector(tapAnswerButton(tag: 3)), for: .touchUpInside)
         
         let answerButton4 = UIButton()
         answerButton4.setTitle("Ответ 4 ", for: .normal)
@@ -94,6 +107,7 @@ class ErrorInfoVC: UIViewController {
             make.trailing.leading.equalToSuperview().inset(25)
             make.height.equalTo(50)
         }
+       // answerButton4.addTarget(self, action: #selector(tapAnswerButton(tag: 4)), for: .touchUpInside)
         
         let reloadDataButton = UIButton()
         reloadDataButton.setTitle("Обновить", for: .normal)
@@ -107,8 +121,25 @@ class ErrorInfoVC: UIViewController {
         }
         reloadDataButton.addTarget(self, action: #selector(reloadDataRequest), for: .touchUpInside)
 
+        func loadQuiz() {
+    
+            var numberOfQuestion = 0
+            let data = quizData[numberOfQuestion]
+            
+            func loadQuistion(data: QuizModel) {
+                quizLabel.text = data.question
+                answerButton1.setTitle(data.answer1, for: .normal)
+                answerButton2.setTitle(data.answer2, for: .normal)
+                answerButton3.setTitle(data.answer3, for: .normal)
+                answerButton4.setTitle(data.answer4, for: .normal)
+            }
+            loadQuistion(data: data)
+            
+        }
+        
+        loadQuiz()
     }
-
+    
     // MARK: - Update data
     @objc func reloadDataRequest(target: UIButton) {
         let myWebView = WebViewController()
@@ -118,4 +149,9 @@ class ErrorInfoVC: UIViewController {
         print("updating data")
         errorAlert(title: "Ошибка", message: "Повторите попытку позже", style: .alert)
         }
+    
+    @objc func tapAnswerButton(button: UIButton) {
+        print("button is", button.tag)
+    }
+    
 }
