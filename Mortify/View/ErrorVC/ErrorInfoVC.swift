@@ -11,7 +11,9 @@ import SnapKit
 class ErrorInfoVC: UIViewController {
     
     var numberOfQuestion = 0
-    let data = quizData[numberOfQuestion]
+    var data = quizData[0]
+    
+    let correctInfoLabel = UILabel()
     
     // MARK: - Error alert
     public func errorAlert(title: String, message: String, style: UIAlertController.Style) {
@@ -44,7 +46,7 @@ class ErrorInfoVC: UIViewController {
         
         //quiz
         
-        
+        data = quizData[numberOfQuestion]
         quizSetup(data: data)
     }
 
@@ -119,17 +121,6 @@ class ErrorInfoVC: UIViewController {
         answerButton4.tag = 4
         answerButton4.addTarget(self, action: #selector(tapAnswerButton(button:)), for: .touchUpInside)
         
-        let correctInfoLabel = UILabel()
-        correctInfoLabel.text = ""
-        correctInfoLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)
-        correctInfoLabel.textAlignment = .center
-        correctInfoLabel.numberOfLines = 1
-        self.view.addSubview(correctInfoLabel)
-        correctInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(answerButton4).offset(150)
-            make.trailing.leading.equalToSuperview().inset(25)
-            make.height.equalTo(100)
-        }
         
         let reloadDataButton = UIButton()
         reloadDataButton.setTitle("Обновить", for: .normal)
@@ -156,6 +147,27 @@ class ErrorInfoVC: UIViewController {
         loadQuiz(data: data)
     }
     
+    func showCorrectLabel(isCorrect: Bool) {
+        
+        correctInfoLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)
+        correctInfoLabel.textAlignment = .center
+        correctInfoLabel.numberOfLines = 1
+        self.view.addSubview(correctInfoLabel)
+        correctInfoLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(500)
+            make.trailing.leading.equalToSuperview().inset(25)
+            make.height.equalTo(100)
+        }
+        
+        switch isCorrect{
+        case true:
+            correctInfoLabel.text = "Ответ верный"
+            correctInfoLabel.textColor = .green
+        case false:
+            correctInfoLabel.text = "Ответ неправильный"
+            correctInfoLabel.textColor = .red
+        }
+    }
     
     // MARK: - Update data
     @objc func reloadDataRequest(target: UIButton) {
@@ -168,7 +180,11 @@ class ErrorInfoVC: UIViewController {
         }
     
     @objc func tapAnswerButton(button: UIButton) {
-       if tag =
+        if button.tag == data.correctAnswerNumber {
+            showCorrectLabel(isCorrect: true)
+        } else {
+            showCorrectLabel(isCorrect: false)
+        }
             
     }
     
