@@ -22,15 +22,14 @@ class ErrorInfoVC: UIViewController {
     let answerButton3 = UIButton()
     let answerButton4 = UIButton()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.setHidesBackButton(true, animated: true)
-        
+        self.view.backgroundColor = .black
         // MARK: - Show Alert
         
-        // errorAlert(title: "Ошибка", message: "Повторите попытку позже", style: .alert)
+         errorAlert(title: "Произошла ошибка", message: "Повторите попытку позже", style: .alert)
         
         // MARK: - Setup UI
         setupErrorLabelAndButton()
@@ -160,7 +159,7 @@ class ErrorInfoVC: UIViewController {
         
         // Score label
         endGameLabel.alpha = 0
-        endGameLabel.text = "Поздравляю, вы хорошо прошли викторину"
+        endGameLabel.text = "Поздравляю, вы прошли викторину"
         endGameLabel.numberOfLines = 0
         endGameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 22.0)
         endGameLabel.isHighlighted = true
@@ -231,10 +230,12 @@ class ErrorInfoVC: UIViewController {
         // show anotation
         switch isCorrect {
         case true:
+            correctInfoLabel.backgroundColor = .black
             correctInfoLabel.text = "Ответ верный"
             correctInfoLabel.textColor = .green
             correctInfoLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
         case false:
+            correctInfoLabel.backgroundColor = .black
             correctInfoLabel.text = "Ответ неправильный"
             correctInfoLabel.textColor = .red
             correctInfoLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
@@ -248,7 +249,7 @@ class ErrorInfoVC: UIViewController {
         myWebView.dataRequest()
         self.removeSpiner()
         print("updating data")
-        errorAlert(title: "Ошибка", message: "Повторите попытку позже", style: .alert)
+        errorAlert(title: "Произошла ошибка", message: "Повторите попытку позже", style: .alert)
     }
     
     // MARK: - Check answer from button

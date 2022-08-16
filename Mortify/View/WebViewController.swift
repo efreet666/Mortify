@@ -28,6 +28,7 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .black
         setupWebView()
         
         // MARK: - Show activity view
@@ -67,7 +68,6 @@ class WebViewController: UIViewController {
                 } else {
                     print("error.localizedDescription")
                     self?.loadErrorScreen()
-                   // self?.fetchCountryData()
                 }
             }
         }
@@ -131,7 +131,7 @@ class WebViewController: UIViewController {
         DispatchQueue.main.async {
             self.removeSpiner()
         }
-        self.navigationController?.pushViewController(errorVC, animated: false)
+        self.navigationController?.pushViewController(errorVC, animated: true)
         print("Error screen loaded")
     }
     
